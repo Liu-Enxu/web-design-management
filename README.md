@@ -4,7 +4,7 @@ A shared, agent-neutral workflow for running a project as a team. Everyone (peop
 
 ## Bootstrap (do this once per project)
 
-Run these from the **project's** root folder. Copy only the contents of `skills/`; do **not** copy this README or this repo's `AGENTS.md` (the first run creates the project's own `AGENTS.md`, and the project keeps its own `README.md`).
+Run these from the **project's** root folder. Copy only the contents of `skills/`; do **not** copy this README (the project keeps its own `README.md`; the first run creates the project's `AGENTS.md`).
 
 **1. Install the skills: one real copy in `.claude/skills/`**
 
@@ -121,7 +121,6 @@ skills/
   design-doc/  diagrams/   cross-cutting
   doc-assemble/
     templates/             spec template + 6 audience profiles
-AGENTS.md                  copy of the template project-flow installs
 ```
 
 What `project-flow` creates in each project repo on the first run, drawn from `templates/structure.yml` (the same tree appears in `docs/README.md`):

@@ -141,7 +141,7 @@ def fill(text, values):
 def init(name, skills):
     values = {"<Project name>": name, "<project name>": name, "<project>": name,
               "<skills>": skills.rstrip("/"), "<date>": datetime.date.today().isoformat()}
-    created, kept, merged, filled, readonly = [], [], [], [], []
+    created, kept, merged = [], [], []
     os.makedirs("docs", exist_ok=True)
     if not os.path.exists(STRUCTURE):
         shutil.copy(os.path.join(TEMPLATES, "structure.yml"), STRUCTURE)
@@ -179,34 +179,22 @@ def init(name, skills):
                 old = open(path, encoding="utf-8").read()
                 marker = "@AGENTS.md" if path == "CLAUDE.md" else "# Agent instructions: project workflow"
                 if marker not in old:
-                    new, done = content.rstrip() + "\n\n" + old, merged
-                elif fill(old, values) != old:
-                    # Raw template copied in by hand: fill its placeholders in place.
-                    new, done = fill(old, values), filled
+                    with open(path, "w", encoding="utf-8") as f:
+                        f.write(content.rstrip() + "\n\n" + old)
+                    merged.append(path)
                 else:
                     kept.append(path)
-                    continue
-                if not os.access(path, os.W_OK):
-                    readonly.append(path)
-                    continue
-                with open(path, "w", encoding="utf-8") as f:
-                    f.write(new)
-                done.append(path)
             else:
                 kept.append(path)
 
     walk(tree, "")
     render()
     for label, items in (("created", created), ("merged (workflow rules added at the top)", merged),
-                         ("filled (template placeholders replaced)", filled),
-                         ("kept (already existed)", kept),
-                         ("NOT updated (read-only; run chmod u+w on it, then init again)", readonly)):
+                         ("kept (already existed)", kept)):
         if items:
             print(f"{label}:")
             for p in items:
                 print("  " + p)
-    if readonly:
-        sys.exit(1)
 
 
 # ---------- check ----------
