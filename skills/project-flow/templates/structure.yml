@@ -1,0 +1,50 @@
+# Source of truth for this project's structure.
+# Every agent and person follows it (see AGENTS.md). docs/README.md shows it as a tree.
+# Change it only through a decision record, then run: structure.py render
+#
+# Format: "name: description". A name ending in "/" is a folder.
+#   A folder with children lists them below it; "_" is the folder's own description.
+#   A folder written as a single line accepts any files inside it.
+#   <angle brackets> and digits are placeholders: 0001-<title>.md matches 0042-auth.md.
+#   <code>/ is replaced by the real code folders after the code-organization decision.
+
+version: 1
+tree:
+  <code>/: code; layout set in stage 3
+  AGENTS.md: rules every agent must follow
+  CLAUDE.md: loads AGENTS.md for Claude Code
+  README.md: run, test, deploy
+  docs/:
+    _: project docs; never deployed
+    README.md: this map
+    structure.yml: source of truth for this tree
+    STATE.md: "dashboard: stage, gates"
+    product/:
+      _: WHAT and WHY
+      stories.md: personas, user stories
+      requirements.md: FR/NFR, scope, priorities
+    decisions/:
+      _: HISTORY; never edited
+      README.md: decision index
+      0001-<title>.md: one decision each
+    design/:
+      _: system AS IT IS TODAY
+      README.md: overview, reading order
+      architecture.md: parts and connections
+      diagrams/: Mermaid sources
+      data-model.md: entities, data types, DB
+      api.md: API contract summary
+      api/: full API spec
+      ux.md: art direction, screens
+      security.md: threats, admins, keys
+      operations.md: deploys, runbooks, alerts
+      performance.md: budgets, optimization log
+    project/:
+      _: HOW we run the work
+      team.md: people, roles, RACI
+      plan.md: current milestone tasks
+      risks.md: risks, assumptions
+      changes.md: change requests, log
+      releases/: one file per release
+      exports/: combined-doc specs
+      archive/: finished plans
