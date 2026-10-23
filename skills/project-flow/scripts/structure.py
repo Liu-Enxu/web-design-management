@@ -14,6 +14,7 @@ import datetime
 import os
 import re
 import shutil
+import subprocess
 import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -138,9 +139,19 @@ def fill(text, values):
     return text
 
 
+def author():
+    """Git user name for 'Last updated by', or 'contributor' if none is set."""
+    try:
+        out = subprocess.run(["git", "config", "user.name"], capture_output=True, text=True)
+    except OSError:
+        return "contributor"
+    return out.stdout.strip() or "contributor"
+
+
 def init(name, skills):
     values = {"<Project name>": name, "<project name>": name, "<project>": name,
-              "<skills>": skills.rstrip("/"), "<date>": datetime.date.today().isoformat()}
+              "<skills>": skills.rstrip("/"), "<date>": datetime.date.today().isoformat(),
+              "<name>": author()}
     created, kept, merged = [], [], []
     os.makedirs("docs", exist_ok=True)
     if not os.path.exists(STRUCTURE):

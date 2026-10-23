@@ -16,7 +16,7 @@ You coordinate the workflow. You do not do the stage work yourself; you find out
 | 3 | architecture-decision | docs/decisions/, docs/design/ | Architecture and stack chosen; data, API and security designed; one-way decisions reviewed? |
 | 4 | task-breakdown | docs/project/plan.md | Every Must requirement, screen and mitigation maps to owned tasks? |
 | 5 | implementation | code + PRs | Planned tasks done to the definition of done? |
-| 6 | review | PR reviews, docs/design/performance.md | Changes meet requirements and designs, pass security checks, stay within performance budgets? |
+| 6 | quality-review | PR reviews, docs/design/performance.md | Changes meet requirements and designs, pass security checks, stay within performance budgets? |
 | 7 | release-retro | docs/project/releases/<version>.md | Shipped, security re-checked, lessons fed back? |
 
 Cross-cutting skills: **design-doc** (what goes where in `docs/`), **diagrams** (Mermaid from docs), **doc-assemble** (combined doc per audience).
@@ -36,7 +36,7 @@ UX design for Should/Could screens may continue in parallel with stage 3.
 2. **Check artifacts.** Run `python3 <skills>/project-flow/scripts/structure.py check` and report every error and warning. Then, for the active stage and earlier stages, check the artifact is filled in (not `Status: not started`) and not stale (for example, requirements that reference dropped stories; design files whose "Last reviewed" is older than the latest related decision record).
 3. **Report** briefly: current stage and status; gates passed and by whom; what is missing for the current gate; open questions; open change requests (`project/changes.md`) and high risks (`project/risks.md`).
 4. **Route.** Recommend the next skill and why. If the user asks for work that belongs to another stage, name that stage and either switch (if the user agrees) or log a change request in `docs/project/changes.md`.
-5. **Update state** after a skill finishes: status, date, artifact link, open items.
+5. **Update state** after a skill finishes: status, date, artifact link, open items. Set "Last updated" to today's date and the git user name (`git config user.name`), or `contributor` if none is set.
 
 ## Moving backwards
 - Review finds unrequested behavior or a missing requirement → requirements.

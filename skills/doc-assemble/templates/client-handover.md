@@ -24,4 +24,4 @@ Owner: <project lead> · Sensitivity: client
 - Internal risks, retros, change log, team details
 
 ## Order
-1. Overview 2. Scope 3. Architecture 4. Operations 5. Changing the system 6. Roles
+1. Overview 2. Scope 3. Architecture 4. Changing the system 5. Roles

@@ -15,7 +15,7 @@ These rules apply to **every agent and person** working in a managed repository;
 |---|---|---|---|
 | `product/` | **What we build and why**: users, stories, requirements, scope, priorities | When needs or scope change | Product owner |
 | `decisions/` | **History of choices**: one record per decision, in order, with the reasoning; never edited, only superseded | A new record per decision | Decider named in each record |
-| `design/` | **The system as it is today**: architecture, data, API, screens, security, operations; always kept current, describes the system rather than repeating the code | In the same PR as the change it describes | Named owner per file |
+| `design/` | **The system as it is today**: architecture, data, API, screens, security; always kept current, describes the system rather than repeating the code | In the same PR as the change it describes | Named owner per file |
 | `project/` | **How we run the work**: team and roles, plan, risks, changes, releases and retros | Every milestone or as events happen | Project lead |
 
 Plus `docs/STATE.md`: a one-screen dashboard (current stage, gate status, open questions). Nothing else goes in it.
@@ -88,4 +88,4 @@ Update the named file in the same PR as the change:
 The docs stay split. When one document is needed for a reader (review pack, stakeholder overview, handover), use the `doc-assemble` sub-skill: it selects content per audience from an export spec and builds a snapshot outside `docs/`.
 
 ## Handoff
-Used by stages 3–7. The `diagrams` skill produces figures; `requirements` owns ux.md, `architecture-decision` owns architecture, data-model, api and security, `review` owns performance.md.
+Used by stages 3–7. The `diagrams` skill produces figures; `requirements` owns ux.md, `architecture-decision` owns architecture, data-model, api and security, `quality-review` owns performance.md.

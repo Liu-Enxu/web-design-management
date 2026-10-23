@@ -19,7 +19,7 @@ This project is managed with the team workflow skills, installed at `<skills>/`.
    - Stage 3 architecture: `<skills>/architecture-decision/SKILL.md`
    - Stage 4 planning: `<skills>/task-breakdown/SKILL.md`
    - Stage 5 coding: `<skills>/implementation/SKILL.md`
-   - Stage 6 review, security and performance: `<skills>/review/SKILL.md`
+   - Stage 6 review, security and performance: `<skills>/quality-review/SKILL.md`
    - Stage 7 release and retrospective: `<skills>/release-retro/SKILL.md`
 3. Before writing anything under `docs/`, read `<skills>/design-doc/SKILL.md`. For diagrams, read `<skills>/diagrams/SKILL.md`. For a combined document, read `<skills>/doc-assemble/SKILL.md`.
 4. Never mark a stage gate as passed. Prepare the work and ask a named person to approve it in `docs/STATE.md`.

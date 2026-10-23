@@ -20,7 +20,7 @@ One file per release: `docs/project/releases/<version>.md`. After the retro, mov
 - [ ] Data migrations tested on a copy of real data; backup taken.
 - [ ] Rollback plan written and tested (how to undo, who decides, how long it takes).
 - [ ] Monitoring and alerts in place for the new behavior.
-- [ ] Security re-check (`architecture-decision/rules/security.md` and the before-release list in `review/rules/security-test.md`): new boundaries, roles and credentials registered; high threats mitigated or accepted; access list current (leavers removed).
+- [ ] Security re-check (`architecture-decision/rules/security.md` and the before-release list in `quality-review/rules/security-test.md`): new boundaries, roles and credentials registered; high threats mitigated or accepted; access list current (leavers removed).
 - [ ] Performance budgets met, or misses accepted by the product owner (`design/performance.md`).
 - [ ] Design docs audited per the `design-doc` skill (no stale or duplicated sections).
 - [ ] Release sign-off pack built with `doc-assemble` (profile: release sign-off) if an approver needs one.
@@ -52,7 +52,7 @@ Hold within a week of release. Format (default): **Keep / Problem / Try**.
    - wrong or missing requirements → `requirements`;
    - decisions that proved wrong → new superseding decision record;
    - design gaps: screens → `requirements`; data, contract, threats → `architecture-decision`;
-   - performance or cost problems → optimization loop in `review/rules/performance.md`;
+   - performance or cost problems → optimization loop in `quality-review/rules/performance.md`;
    - workflow problems → a pull request to this skills repo.
 
 ## Output: docs/project/releases/<version>.md

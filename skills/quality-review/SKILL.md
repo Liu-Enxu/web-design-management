@@ -1,5 +1,5 @@
 ---
-name: review
+name: quality-review
 description: Stage 6 of the team workflow. Use to review a pull request or completed task against its acceptance criteria, requirements, decision records, API contract and Figma design, plus code quality, security testing and performance testing, and to run measured optimization when a performance or cost budget is missed. Use for any "review this PR/change/code", "security test", "performance test", "make it faster/cheaper" request. Produces review notes and writes docs/design/performance.md.
 ---
 

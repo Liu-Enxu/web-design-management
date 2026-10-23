@@ -50,7 +50,7 @@ Goal: code that does what the task says, follows the recorded decisions, and is 
 <one paragraph>
 
 ## Why
-Task: T-xxx · Requirements: FR-xxx, NFR-xxx · decision records: 000x · Design: S-xx / API op / TH-xx
+Task: T-xxx · Requirements: FR-xxx, NFR-xxx · decision records: DR-xxxx · Design: S-xx / API op / TH-xx
 Docs updated: <design/ files changed, or "none needed">
 Screenshots: <for UI changes, compared with the design frame>
 
@@ -65,4 +65,4 @@ Screenshots: <for UI changes, compared with the design frame>
 ```
 
 ## Handoff
-→ `review`.
+→ `quality-review`.

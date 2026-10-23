@@ -1,6 +1,6 @@
 # Common stacks (team defaults)
 
-Owner: <Liu> · Status: TODO, to be filled in by the team
+Status: TODO, to be filled in by the team
 
 The menus stay stack-neutral. This file is where the team names the concrete stacks it knows well, so stage 3 can offer them as default options. One row per profile; keep 3–6 profiles.
 

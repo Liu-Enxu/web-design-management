@@ -49,11 +49,11 @@ project-flow                   router: state → next skill
 ├── 3  architecture-decision   AI proposes, team decides
 │   ├── stacks.md              team default stacks
 │   ├── menus/ (12)            options incl. <code>/ layout
-│   ├── perspectives/ (4)      BE, FE, security, ops
+│   ├── perspectives/ (5)      BE, FE, security, ops, UX
 │   └── rules/                 data, API, security design
 ├── 4  task-breakdown          tasks; scaffold <code>/
 ├── 5  implementation          Figma → code, run end to end
-├── 6  review                  check vs requirements, design
+├── 6  quality-review          check vs requirements, design
 │   └── rules/                 security and perf. testing
 └── 7  release-retro           ship, security, retro
 
@@ -77,7 +77,7 @@ W = writes · U = updates · R = reads · `docs/` paths unless noted
 | architecture-decision | R | W records + README.md | W architecture.md, data-model.md, api.md, api/, security.md | U risks.md | U STATE.md |
 | task-breakdown | R | R | R | W plan.md · R risks.md | U STATE.md |
 | implementation | R | R | U per update triggers | U plan.md, changes.md | W `<code>/` · Figma status |
-| review | R | R | W performance.md | U changes.md | R `<code>/` · W for optimization |
+| quality-review | R | R | W performance.md | U changes.md | R `<code>/` · W for optimization |
 | release-retro | R | R | R (audit) | W releases/ · U archive/, plan.md | U STATE.md |
 | design-doc | rules | rules | rules + audit | rules | |
 | diagrams | R | R | W diagrams/ · U files that embed them | | |
@@ -116,7 +116,7 @@ skills/
     templates/decision.md  decision record template
   requirements/rules/      ux-art.md
   task-breakdown/  implementation/
-  review/rules/            security-test.md, performance.md
+  quality-review/rules/    security-test.md, performance.md
   release-retro/
   design-doc/  diagrams/   cross-cutting
   doc-assemble/
