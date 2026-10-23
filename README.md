@@ -33,9 +33,9 @@ On Windows, symlinks need Developer Mode; otherwise copy the folder instead and 
 | Codex, Deep Code, others | "Read `.claude/skills/project-flow/SKILL.md` and run it." |
 | No agent | `python3 .claude/skills/project-flow/scripts/structure.py init --name "<project>" --skills .claude/skills` |
 
-It creates every file and folder in `docs/structure.yml`, plus `AGENTS.md` and `CLAUDE.md` at the root (existing ones are kept, with the workflow rules added at the top), then asks who owns each gate.
+It creates every file and folder in `docs/structure.yml`, plus `AGENTS.md` and `CLAUDE.md` at the root (existing ones are kept, with the workflow rules added at the top), then runs the structure check and recommends the next stage. Gate owners are asked later, when the work is divided.
 
-**4. Commit.** If the project folder is not a git repository yet, run `git init` first. Then commit `.claude/skills/`, the agent links, `AGENTS.md`, `CLAUDE.md` and `docs/`, so every teammate and agent gets the same setup on clone.
+**4. Commit.** If the project folder is not a git repository yet, run `git init` first. Then commit `.claude/skills/`, the agent links, `AGENTS.md`, `CLAUDE.md`, `README.md` and `docs/`, so every teammate and agent gets the same setup on clone.
 
 **Updating the skills later:** replace `.claude/skills/` with the new version and commit. Don't run `init` again; `project-flow` sees `docs/STATE.md` and reports the current stage.
 
@@ -130,18 +130,19 @@ What `project-flow` creates in each project repo on the first run, drawn from `t
 ├── AGENTS.md                rules every agent must follow
 ├── CLAUDE.md                loads AGENTS.md for Claude Code
 ├── README.md                run, test, deploy
+├── build/                   doc-assemble snapshots; contents not committed
 └── docs/                    project docs; never deployed
     ├── README.md            this map
     ├── structure.yml        source of truth for this tree
     ├── STATE.md             dashboard: stage, gates
     ├── product/             WHAT and WHY
-    │   ├── stories.md       personas, user stories
+    │   ├── stories.md       personas, user stories, bugs
     │   └── requirements.md  FR/NFR, scope, priorities
     ├── decisions/           HISTORY; never edited
     │   ├── README.md        decision index
     │   └── 0001-<title>.md  one decision each
     ├── design/              system AS IT IS TODAY
-    │   ├── README.md        overview, reading order
+    │   ├── README.md        one line per file, reading order
     │   ├── architecture.md  parts and connections
     │   ├── diagrams/        Mermaid sources
     │   ├── data-model.md    entities, data types, DB
@@ -149,7 +150,6 @@ What `project-flow` creates in each project repo on the first run, drawn from `t
     │   ├── api/             full API spec
     │   ├── ux.md            art direction, screens
     │   ├── security.md      threats, admins, keys
-    │   ├── operations.md    deploys, runbooks, alerts
     │   └── performance.md   budgets, optimization log
     └── project/             HOW we run the work
         ├── team.md          people, roles, RACI

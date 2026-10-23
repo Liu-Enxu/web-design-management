@@ -29,7 +29,7 @@ The layout is defined in **`docs/structure.yml`**, the single source of truth (t
 - `project-flow` creates every file and folder in it on the first run; files say `Status: not started` until a skill fills them. When you fill a file, remove that line.
 - `structure.py check` (in `project-flow/scripts/`) reports anything not in `structure.yml`.
 - To add or move a file or folder: decision record → edit `structure.yml` → `structure.py render` → `structure.py check`.
-- Starter formats for `STATE.md`, `decisions/README.md`, `project/team.md`, `risks.md` and `changes.md` are in `project-flow/templates/files/`.
+- Starter formats for `STATE.md`, `decisions/README.md`, `design/README.md`, `project/team.md`, `risks.md` and `changes.md` are in `project-flow/templates/files/`.
 - When a milestone closes, move its plan section to `project/archive/<milestone>.md` and start the next one in `plan.md`.
 
 ## Section contract
@@ -74,8 +74,8 @@ Update the named file in the same PR as the change:
 | API or data shape change | api.md / api/, data-model.md |
 | New screen or flow | ux.md |
 | New role, integration, secret or data type | security.md (redo `architecture-decision/rules/security.md` for it) |
-| New environment, alert or deploy step | operations.md |
 | Performance budget or result changes | performance.md |
+| Design file added, removed or repurposed | design/README.md (one line per file) |
 
 ## Audit (run before each release, or on request)
 1. For each `design/` file: is "Last reviewed" older than the last related decision record or merged change? Mark stale.

@@ -21,7 +21,7 @@ Goal: diagrams that are correct, small, versioned with the code, and regenerated
 | What happens step by step in a key flow? | Sequence | `sequenceDiagram` | a story + api.md |
 | What data exists and how is it related? | Data model | `erDiagram` | data-model.md |
 | What states can a record be in? | State | `stateDiagram-v2` | requirements, data-model.md |
-| Where does it run? | Deployment | `flowchart` | deployment decision record, operations.md |
+| Where does it run? | Deployment | `flowchart` | deployment decision record |
 | How does a user move through screens? | User flow | `flowchart` | ux.md |
 | Where are the trust boundaries? | Data-flow with boundaries | `flowchart` with subgraphs | security.md |
 

@@ -49,7 +49,7 @@ Estimate scale: <T-shirt | points | days>
 ## Tasks
 | ID | Task | Milestone | Owner | Requirement | Design (S-/API/TH-) | decision record | Estimate | Depends on | Status |
 |---|---|---|---|---|---|---|---|---|---|
-| T-001 | | M1 | | FR-001 | S-01 | 0001 | S | | todo |
+| T-001 | | M1 | | FR-001 | S-01 | DR-0001 | S | | todo |
 
 ### T-001 acceptance criteria
 - 

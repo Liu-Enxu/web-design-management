@@ -15,18 +15,19 @@ Defined in `docs/structure.yml` (the source of truth); the tree below is drawn f
 ├── AGENTS.md                rules every agent must follow
 ├── CLAUDE.md                loads AGENTS.md for Claude Code
 ├── README.md                run, test, deploy
+├── build/                   doc-assemble snapshots; contents not committed
 └── docs/                    project docs; never deployed
     ├── README.md            this map
     ├── structure.yml        source of truth for this tree
     ├── STATE.md             dashboard: stage, gates
     ├── product/             WHAT and WHY
-    │   ├── stories.md       personas, user stories
+    │   ├── stories.md       personas, user stories, bugs
     │   └── requirements.md  FR/NFR, scope, priorities
     ├── decisions/           HISTORY; never edited
     │   ├── README.md        decision index
     │   └── 0001-<title>.md  one decision each
     ├── design/              system AS IT IS TODAY
-    │   ├── README.md        overview, reading order
+    │   ├── README.md        one line per file, reading order
     │   ├── architecture.md  parts and connections
     │   ├── diagrams/        Mermaid sources
     │   ├── data-model.md    entities, data types, DB
@@ -34,7 +35,6 @@ Defined in `docs/structure.yml` (the source of truth); the tree below is drawn f
     │   ├── api/             full API spec
     │   ├── ux.md            art direction, screens
     │   ├── security.md      threats, admins, keys
-    │   ├── operations.md    deploys, runbooks, alerts
     │   └── performance.md   budgets, optimization log
     └── project/             HOW we run the work
         ├── team.md          people, roles, RACI
@@ -93,7 +93,7 @@ W = writes · U = updates · R = reads · `docs/` paths unless noted
 
 ## IDs
 
-`US` story · `FR`/`NFR` requirement · `DR` decision · `S` screen · `TH` threat · `T` task
+`US` story · `BUG` bug · `FR`/`NFR` requirement · `DR` decision · `S` screen · `TH` threat · `T` task
 
 ## Rules
 

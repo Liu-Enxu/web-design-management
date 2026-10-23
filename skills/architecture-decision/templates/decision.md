@@ -1,4 +1,4 @@
-# DR-NNNN: <short decision title>
+# DR-xxxx: <short decision title>
 
 - Status: proposed | accepted | superseded by DR-xxxx | deprecated
 - Date: 

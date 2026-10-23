@@ -17,7 +17,6 @@ Owner: <project lead> · Sensitivity: client
 | decisions/ | key table | accepted |
 | design/api.md | link | link to spec |
 | design/data-model.md | summary | |
-| design/operations.md | full | |
 | design/security.md | key table | roles only; names only if agreed |
 
 ## Never include

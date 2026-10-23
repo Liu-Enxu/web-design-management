@@ -18,7 +18,6 @@ Owner: <tech lead> · Sensitivity: internal
 | decisions/ | key table | accepted (number, title, one-line decision) |
 | design/api.md | link | |
 | design/ux.md | link | |
-| design/operations.md | summary | |
 | project/team.md | full | |
 
 ## Never include

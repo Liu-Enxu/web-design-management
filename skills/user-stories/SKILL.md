@@ -35,6 +35,7 @@ Goal: a shared, written picture of who the users are and what they need, before 
 ## Rules
 - No technology words in stories (no "database", "API", "React"). Those belong in stages 2–3.
 - IDs are permanent: `US-001`, `US-002`… Deleted stories are marked `dropped`, never reused.
+- Bugs (wrong behavior in something already built) go in the Bugs section as `BUG-001`, `BUG-002`…, linked to the story they break.
 - Discussion of ideas is welcome here; record outcomes as stories, open questions or explicit "not doing" notes.
 
 ## Output: docs/product/stories.md
@@ -62,6 +63,14 @@ Goal: a shared, written picture of who the users are and what they need, before 
 ## Relationship map
 | Story | Relation | Story | Note |
 |---|---|---|---|
+
+## Bugs
+### BUG-001 <short title>
+- Breaks: US-00x · Status: open | fixed | won't fix
+- What happens: …
+- What should happen: …
+- Steps to reproduce: 1. … 2. …
+- Source: <reporter, ticket>
 
 ## Open questions and assumptions
 | ID | Question | Owner | Due |

@@ -64,12 +64,12 @@ Mark N/A categories with one line (a CLI tool has no rendering decision).
 - Never write secret values anywhere in `docs/`.
 
 ## Output
-- `docs/decisions/0001-<title>.md` per decision, and the index `docs/decisions/README.md`:
+- `docs/decisions/0001-<title>.md` per decision (cited everywhere as `DR-0001`), and the index `docs/decisions/README.md`:
 
 ```markdown
-| Record | Title | Category | Status | Reversibility | Reviews |
-|---|---|---|---|---|---|
-| 0001 | Modular monolith | system-shape | accepted | one-way | BE ✓ FE ✓ SEC ✓ OPS ✓ |
+| Record | Title | Category | Status | Reversibility | Reviews | Superseded by |
+|---|---|---|---|---|---|---|
+| DR-0001 | Modular monolith | system-shape | accepted | one-way | BE ✓ FE ✓ SEC ✓ OPS ✓ | |
 ```
 - `docs/design/architecture.md`, `data-model.md`, `api.md` + `api/`, `security.md`.
 

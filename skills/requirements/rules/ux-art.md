@@ -50,7 +50,7 @@ Tokens (color, type, spacing) are defined once in the library, not per screen.
 - [ ] Responsive behavior or breakpoints specified.
 - [ ] Copy final or marked as placeholder.
 - [ ] Accessibility: contrast, keyboard path, focus order, labels.
-- [ ] Data shown matches what the API will provide (checked again in stage 3).
+- [ ] Data shown is covered by the data requirements in `requirements.md` (matched to the API in stage 3).
 
 ## Output: docs/design/ux.md
 

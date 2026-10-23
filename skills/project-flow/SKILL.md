@@ -31,7 +31,7 @@ UX design for Should/Could screens may continue in parallel with stage 3.
       `python3 <skills>/project-flow/scripts/structure.py init --name "<project name>" --skills <skills>`
       It copies `templates/structure.yml` to `docs/structure.yml` and creates **every file and folder listed in it**, exactly as the tree in `docs/README.md` shows: starter content from `templates/` where one exists, otherwise a stub with `Status: not started`; `.gitkeep` in empty folders. It installs `AGENTS.md` and `CLAUDE.md` at the root (adding the workflow rules at the top if they already exist) and never overwrites other existing files.
    3. If Python is not available, do the same by hand from `templates/structure.yml`, with the same contents.
-   4. Show the user the list of created files, then ask who owns each gate and who reviews each perspective, and fill in `docs/project/team.md`.
+   4. Show the user the list of created files. Do not ask for gate owners or reviewers yet; people are assigned when the work is divided.
    Then go to step 2.
 2. **Check artifacts.** Run `python3 <skills>/project-flow/scripts/structure.py check` and report every error and warning. Then, for the active stage and earlier stages, check the artifact is filled in (not `Status: not started`) and not stale (for example, requirements that reference dropped stories; design files whose "Last reviewed" is older than the latest related decision record).
 3. **Report** briefly: current stage and status; gates passed and by whom; what is missing for the current gate; open questions; open change requests (`project/changes.md`) and high risks (`project/risks.md`).
@@ -48,10 +48,10 @@ UX design for Should/Could screens may continue in parallel with stage 3.
 Record the reason in `docs/project/changes.md` under Change log.
 
 ## Gates
-A gate is passed only when a named person writes their approval in `docs/STATE.md`. You prepare a gate checklist and ask for sign-off; you never sign it yourself.
+A gate is passed only when a named person writes their approval in `docs/STATE.md`. You prepare a gate checklist and ask for sign-off; you never sign it yourself. If `docs/project/team.md` names no approver for the gate, ask who approves it and record them there.
 
 ## Small or urgent work
-1. Write one story or bug in `product/stories.md` (or link the issue).
+1. Write one story, or one bug in the `BUG-` format (see `user-stories`), in `product/stories.md` (or link the issue).
 2. Confirm it changes no requirement, decision record, API contract, screen design or credential register entry. If it does, it is not small.
 3. Go to implementation and review.
 
@@ -67,6 +67,6 @@ A gate is passed only when a named person writes their approval in `docs/STATE.m
 | `templates/structure.yml` | Copied to `docs/structure.yml` |
 | `templates/docs-README.md` | `docs/README.md` (tree drawn from structure.yml) |
 | `templates/AGENTS.md`, `templates/CLAUDE.md` | Repository root |
-| `templates/files/docs/...` | Starter content for STATE.md, decisions/README.md, project/team.md, risks.md, changes.md |
+| `templates/files/docs/...` | Starter content for STATE.md, decisions/README.md, design/README.md, project/team.md, risks.md, changes.md |
 
 Keep STATE.md to one screen. Change requests, the change log, risks and release history live in `docs/project/`.
