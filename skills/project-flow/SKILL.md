@@ -32,7 +32,7 @@ UX design for Should/Could screens may continue in parallel with stage 3.
       It copies `templates/structure.yml` to `docs/structure.yml` and creates **every file and folder listed in it**, exactly as the tree in `docs/README.md` shows: starter content from `templates/` where one exists, otherwise a stub with `Status: not started`; `.gitkeep` in empty folders. It installs `AGENTS.md` and `CLAUDE.md` at the root (adding the workflow rules at the top if they already exist) and never overwrites other existing files.
    3. If Python is not available, do the same by hand from `templates/structure.yml`, with the same contents.
    4. Show the user the list of created files, then ask who owns each gate and who reviews each perspective, and fill in `docs/project/team.md`.
-   Then go to step 4.
+   Then go to step 2.
 2. **Check artifacts.** Run `python3 <skills>/project-flow/scripts/structure.py check` and report every error and warning. Then, for the active stage and earlier stages, check the artifact is filled in (not `Status: not started`) and not stale (for example, requirements that reference dropped stories; design files whose "Last reviewed" is older than the latest related decision record).
 3. **Report** briefly: current stage and status; gates passed and by whom; what is missing for the current gate; open questions; open change requests (`project/changes.md`) and high risks (`project/risks.md`).
 4. **Route.** Recommend the next skill and why. If the user asks for work that belongs to another stage, name that stage and either switch (if the user agrees) or log a change request in `docs/project/changes.md`.

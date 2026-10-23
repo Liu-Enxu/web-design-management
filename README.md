@@ -35,7 +35,7 @@ On Windows, symlinks need Developer Mode; otherwise copy the folder instead and 
 
 It creates every file and folder in `docs/structure.yml`, plus `AGENTS.md` and `CLAUDE.md` at the root (existing ones are kept, with the workflow rules added at the top), then asks who owns each gate.
 
-**4. Commit** `.claude/skills/`, the agent links, `AGENTS.md`, `CLAUDE.md` and `docs/`, so every teammate and agent gets the same setup on clone.
+**4. Commit.** If the project folder is not a git repository yet, run `git init` first. Then commit `.claude/skills/`, the agent links, `AGENTS.md`, `CLAUDE.md` and `docs/`, so every teammate and agent gets the same setup on clone.
 
 **Updating the skills later:** replace `.claude/skills/` with the new version and commit. Don't run `init` again; `project-flow` sees `docs/STATE.md` and reports the current stage.
 

@@ -243,6 +243,12 @@ def check():
         for entry, _, _ in entries(tree):
             if not entry.endswith("/") and not os.path.exists(entry):
                 warnings.append(f"missing: {entry}")
+        # Other root files and folders may already exist: report them, never fail.
+        known = {e.rstrip("/") for e, _, _ in entries(tree) if not is_placeholder(e)}
+        for name in sorted(os.listdir(".")):
+            if not name.startswith(".") and name not in known:
+                suffix = "/" if os.path.isdir(name) else ""
+                warnings.append(f"not in structure.yml (left as is): {name}{suffix}")
     else:
         walk(tree, "", ".")
 
