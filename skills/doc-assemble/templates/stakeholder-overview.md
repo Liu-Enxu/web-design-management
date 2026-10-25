@@ -16,7 +16,6 @@ Owner: <project lead> · Sensitivity: internal
 | design/architecture.md | key table | container diagram only |
 | project/plan.md | key table | milestones only |
 | project/risks.md | key table | top 5 by impact |
-| project/team.md | key table | owners only |
 
 ## Never include
 - API, data model, security details, credentials

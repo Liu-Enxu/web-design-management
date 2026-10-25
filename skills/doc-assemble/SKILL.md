@@ -55,7 +55,7 @@ Apply before writing: priority (Must / Should), status (accepted, not superseded
 |---|---|---|---|---|
 | **Design review** | Engineers, reviewers | Is the design sound? What are the risks? | stories (summary), requirements (key table: Must + all NFRs), decisions (full: one-way), architecture, data model, API (full), security threats (key table), risks (key table) | credential register, task status |
 | **Stakeholder overview** | Management, sponsors | What are we building, by when, at what risk? | stories (summary by epic), scope in/out (full), release slices, plan milestones (key table), top risks (key table), architecture (container diagram only) | API, data model, security details, credentials |
-| **Onboarding** | New team members | How does it work, where do I start? | design overview, architecture (full), decisions (key table: all accepted), code layout (from code-organization decision), team (full) | risks, change log, credentials |
+| **Onboarding** | New team members | How does it work, where do I start? | design overview, architecture (full), decisions (key table: all accepted), code layout (from code-organization decision) | risks, change log, credentials |
 | **Client handover** | Client or operator taking over | How do we run, change and support it? | scope, architecture, API (link to spec), roles (key table, no names unless agreed), decisions (key table) | internal risks, retros, credential register (hand over secrets through the secret manager, never in the doc) |
 | **Security review** | Security reviewer, auditor | What can go wrong and what protects it? | trust-boundary diagram, threats (full), roles and environment access (full), credential register (owners and storage only), auth decisions (full), data sensitivity (key table) | secret values (always) |
 | **Release sign-off** | Approver of a release | Is this release ready? | release file (full), Must FRs with test status (key table), security re-check, performance budgets (key table), open risks (key table) | design detail beyond what changed |
@@ -64,7 +64,7 @@ Apply before writing: priority (Must / Should), status (accepted, not superseded
 1. Read the spec. If a question in it has no source in `docs/`, report it as a gap; do not invent content.
 2. For each source, apply the filter, then the depth. Write summaries for the stated audience; every summary links to its source.
 3. Re-check **Never include** and the sensitivity level. Security and credential content defaults to omit for anything above `internal`.
-4. Add front matter: title, version or commit, date, audience, filters applied, list of sources with their "Last reviewed" dates.
+4. Add front matter: title, version or commit, date, audience, filters applied, list of sources with their "Last updated" dates.
 5. Render diagrams from their Mermaid sources.
 6. Output to a build folder that is not part of `docs/` (for example `build/docs/<name>-<version>.md`, then PDF or Word via a converter). Link the snapshot from the release file; do not commit it into `docs/`.
 7. Ask the spec owner to approve before it is sent.

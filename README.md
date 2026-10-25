@@ -31,13 +31,14 @@ On Windows, symlinks need Developer Mode; otherwise copy the folder instead and 
 |---|---|
 | Claude Code, Qwen Code | `/project-flow` |
 | Codex, Deep Code, others | "Read `.claude/skills/project-flow/SKILL.md` and run it." |
-| No agent | `python3 .claude/skills/project-flow/scripts/structure.py init --name "<project>" --skills .claude/skills` |
 
-It creates every file and folder in `docs/structure.yml`, plus `AGENTS.md` and `CLAUDE.md` at the root (existing ones are kept, with the workflow rules added at the top), then runs the structure check and recommends the next stage. Gate owners are asked later, when the work is divided.
+Start the agent in the project's root folder. Started anywhere else, it may not find `/project-flow`; tell it to read `.claude/skills/project-flow/SKILL.md` instead.
 
-**4. Commit.** If the project folder is not a git repository yet, run `git init` first. Then commit `.claude/skills/`, the agent links, `AGENTS.md`, `CLAUDE.md`, `README.md` and `docs/`, so every teammate and agent gets the same setup on clone.
+It creates every file and folder in `docs/structure.yml`, plus `AGENTS.md` and `CLAUDE.md` at the root (existing ones are kept, with the workflow rules added at the top), then runs the structure check and recommends the next stage. Gate approvers are asked at each sign-off.
 
-**Updating the skills later:** replace `.claude/skills/` with the new version and commit. Don't run `init` again; `project-flow` sees `docs/STATE.md` and reports the current stage.
+**4. Commit.** If the project folder is not a git repository yet, run `git init` first. Then commit `.claude/skills/`, the agent links, `AGENTS.md`, `CLAUDE.md`, `README.md`, `.gitignore`, `build/` and `docs/` as `chore: bootstrap project workflow`, so every teammate and agent gets the same setup on clone.
+
+**Skill versions:** a project keeps the skills it was set up with until it ends. Start the next project with the new version.
 
 ## The pipeline
 
@@ -51,7 +52,7 @@ project-flow                   router: state → next skill
 │   ├── menus/ (12)            options incl. <code>/ layout
 │   ├── perspectives/ (5)      BE, FE, security, ops, UX
 │   └── rules/                 data, API, security design
-├── 4  task-breakdown          tasks; scaffold <code>/
+├── 4  task-breakdown          tasks; plan the scaffold
 ├── 5  implementation          Figma → code, run end to end
 ├── 6  quality-review          check vs requirements, design
 │   └── rules/                 security and perf. testing
@@ -71,7 +72,7 @@ W = writes · U = updates · R = reads · `docs/` paths unless noted
 
 | Skill | product/ | decisions/ | design/ | project/ | Other |
 |---|---|---|---|---|---|
-| project-flow | W all stubs | W README.md | W all stubs | W all stubs · team.md | W README.md, structure.yml, STATE.md · root AGENTS.md, CLAUDE.md · runs check |
+| project-flow | W all stubs | W README.md | W all stubs | W all stubs | W README.md, structure.yml, STATE.md · root AGENTS.md, CLAUDE.md · runs check |
 | user-stories | W stories.md | | | | U STATE.md |
 | requirements | R stories · W requirements.md | | W ux.md | U risks.md | U STATE.md · Figma |
 | architecture-decision | R | W records + README.md | W architecture.md, data-model.md, api.md, api/, security.md | U risks.md | U STATE.md |
@@ -152,7 +153,6 @@ What `project-flow` creates in each project repo on the first run, drawn from `t
     │   ├── security.md      threats, admins, keys
     │   └── performance.md   budgets, optimization log
     └── project/             HOW we run the work
-        ├── team.md          people, roles, RACI
         ├── plan.md          current milestone tasks
         ├── risks.md         risks, assumptions
         ├── changes.md       change requests, log

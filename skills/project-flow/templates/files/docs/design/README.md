@@ -1,5 +1,5 @@
 # Design: <project>
-Owner: · Audience: everyone new to the system · Last reviewed:
+Audience: everyone new to the system · Last updated: <date> by <name>
 Sources: docs/structure.yml
 
 The system as it is today. Read the files in this order.

@@ -4,7 +4,7 @@
 Run from the project repository root:
   python3 <skills>/project-flow/scripts/structure.py init --name "My project" --skills .claude/skills
   python3 <skills>/project-flow/scripts/structure.py render   # redraw the tree in docs/README.md
-  python3 <skills>/project-flow/scripts/structure.py check    # exit 1 if anything is misplaced
+  python3 <skills>/project-flow/scripts/structure.py check    # exit 1 if anything in docs/ is misplaced
 
 Standard library only. Uses PyYAML if installed, otherwise a built-in reader for the
 simple format used by structure.yml.
@@ -19,6 +19,7 @@ import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 TEMPLATES = os.path.join(os.path.dirname(HERE), "templates")
+SKILLS = os.path.dirname(os.path.dirname(HERE))
 STRUCTURE = os.path.join("docs", "structure.yml")
 BEGIN, END = "<!-- structure:begin -->", "<!-- structure:end -->"
 DESC_COL = 29  # column where descriptions start in the drawn tree
@@ -125,12 +126,26 @@ def title_of(name):
     return base[:1].upper() + base[1:]
 
 
-def stub(path, desc):
-    title = title_of(os.path.basename(path))
+OUTPUT = re.compile(r"^## Output: (\S+)\s*\n+```markdown\n(# .+)$", re.M)
+
+
+def skill_headings():
+    """Map each output path to the heading its skill's '## Output: <path>' block starts with."""
+    headings = {}
+    for dirpath, _, filenames in os.walk(SKILLS):
+        for fn in filenames:
+            if fn.endswith(".md"):
+                with open(os.path.join(dirpath, fn), encoding="utf-8") as f:
+                    headings.update(OUTPUT.findall(f.read()))
+    return headings
+
+
+def stub(path, desc, heading=None):
+    heading = heading or "# " + title_of(os.path.basename(path))
     if path.startswith("docs/design/"):
-        return (f"# {title}\nOwner: · Audience: · Last reviewed:\nSources:\n\n"
+        return (f"{heading}\nAudience: · Last updated: <date> by <name>\nSources:\n\n"
                 f"> Status: not started. Holds: {desc}.\n")
-    return f"# {title}\n\n> Status: not started. Holds: {desc}.\n"
+    return f"{heading}\n\n> Status: not started. Holds: {desc}.\n"
 
 
 def fill(text, values):
@@ -153,11 +168,13 @@ def init(name, skills):
               "<skills>": skills.rstrip("/"), "<date>": datetime.date.today().isoformat(),
               "<name>": author()}
     created, kept, merged = [], [], []
+    already = os.path.exists(os.path.join("docs", "STATE.md"))
     os.makedirs("docs", exist_ok=True)
     if not os.path.exists(STRUCTURE):
         shutil.copy(os.path.join(TEMPLATES, "structure.yml"), STRUCTURE)
         created.append(STRUCTURE)
     tree = load(STRUCTURE)
+    headings = {p: fill(h, values) for p, h in skill_headings().items()}
 
     def template_for(path):
         special = {"AGENTS.md": "AGENTS.md", "CLAUDE.md": "CLAUDE.md",
@@ -181,7 +198,7 @@ def init(name, skills):
             if path in created:
                 continue
             tpl = template_for(path)
-            content = fill(open(tpl, encoding="utf-8").read(), values) if tpl else stub(path, desc)
+            content = fill(open(tpl, encoding="utf-8").read(), values) if tpl else fill(stub(path, desc, headings.get(path)), values)
             if not os.path.exists(path):
                 with open(path, "w", encoding="utf-8") as f:
                     f.write(content)
@@ -200,12 +217,25 @@ def init(name, skills):
 
     walk(tree, "")
     render()
-    for label, items in (("created", created), ("merged (workflow rules added at the top)", merged),
+    if "build/" in tree:
+        # Keep build/ itself in git, never its generated snapshots.
+        lines = ["build/*", "!build/.gitkeep"]
+        old = open(".gitignore", encoding="utf-8").read() if os.path.exists(".gitignore") else None
+        missing = [ln for ln in lines if ln not in (old or "").splitlines()]
+        if missing:
+            with open(".gitignore", "a", encoding="utf-8") as f:
+                if old and not old.endswith("\n"):
+                    f.write("\n")
+                f.write("\n".join(missing) + "\n")
+            (created if old is None else merged).append(".gitignore")
+    for label, items in (("created", created), ("merged (workflow content added to an existing file)", merged),
                          ("kept (already existed)", kept)):
         if items:
             print(f"{label}:")
             for p in items:
                 print("  " + p)
+    if already:
+        print("Project already set up; nothing was overwritten and --name was not applied.")
 
 
 # ---------- check ----------
@@ -245,23 +275,14 @@ def check():
             if not is_placeholder(entry) and not os.path.exists(os.path.join(real, entry.rstrip("/"))):
                 warnings.append(f"missing: {base}{entry}")
 
-    code_placeholder = any(e == "<code>/" for e, _, _ in entries(tree))
+    # Only docs/ and the root files are checked; code folders and anything else
+    # beside docs/ are left alone.
     docs_entry, docs_children = match(tree, "docs", True)
-    if code_placeholder:
-        # Code layout not decided yet: check docs/ and the required root files only.
-        if docs_children is not None and os.path.isdir("docs"):
-            walk(docs_children, "docs/", "docs")
-        for entry, _, _ in entries(tree):
-            if not entry.endswith("/") and not os.path.exists(entry):
-                warnings.append(f"missing: {entry}")
-        # Other root files and folders may already exist: report them, never fail.
-        known = {e.rstrip("/") for e, _, _ in entries(tree) if not is_placeholder(e)}
-        for name in sorted(os.listdir(".")):
-            if not name.startswith(".") and name not in known:
-                suffix = "/" if os.path.isdir(name) else ""
-                warnings.append(f"not in structure.yml (left as is): {name}{suffix}")
-    else:
-        walk(tree, "", ".")
+    if docs_children is not None and os.path.isdir("docs"):
+        walk(docs_children, "docs/", "docs")
+    for entry, _, _ in entries(tree):
+        if not entry.endswith("/") and not os.path.exists(entry):
+            warnings.append(f"missing: {entry}")
 
     for dirpath, dirnames, filenames in os.walk("docs"):
         dirnames[:] = [d for d in dirnames if not d.startswith(".")]
@@ -273,8 +294,8 @@ def check():
             if SECRET.search(text):
                 errors.append(f"possible secret value: {path}")
             if path.startswith("docs/design/") and fn.endswith(".md") and "/api/" not in path:
-                if "Owner:" not in text or "Last reviewed:" not in text:
-                    warnings.append(f"missing Owner/Last reviewed header: {path}")
+                if "Last updated:" not in text:
+                    warnings.append(f"missing Last updated header: {path}")
 
     for w in warnings:
         print("warning: " + w)
@@ -295,8 +316,12 @@ def main():
     p.add_argument("--name", required=True, help="project name")
     p.add_argument("--skills", required=True, help="path where the workflow skills are installed")
     sub.add_parser("render", help="redraw the tree in docs/README.md from docs/structure.yml")
-    sub.add_parser("check", help="report files that do not match docs/structure.yml")
+    sub.add_parser("check", help="report docs/ files that do not match docs/structure.yml")
     a = ap.parse_args()
+    if a.cmd != "init" and not os.path.exists(STRUCTURE):
+        print("No docs/structure.yml here. Run this from the project root; "
+              "if the project is not set up yet, run init first.")
+        sys.exit(2)
     if a.cmd == "init":
         init(a.name, a.skills)
     elif a.cmd == "render":

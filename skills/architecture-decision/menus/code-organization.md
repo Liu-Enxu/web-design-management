@@ -5,7 +5,7 @@ Cost to reverse: one-way for repository layout (moving history and CI is costly)
 
 Decide after system-shape, rendering and api-style; the structure follows the architecture, not the other way round.
 
-The result replaces the `<code>/` placeholder in `docs/structure.yml` with the chosen top-level folders, each with a one-line description; then run `structure.py render` and `structure.py check` (see `project-flow`). From then on the check enforces the code folders too.
+The code layout lives in this decision record; `docs/structure.yml` only covers `docs/`.
 
 ## Questions to answer first
 - How many deployable parts (from system-shape) and how many teams?
@@ -33,7 +33,7 @@ The result replaces the `<code>/` placeholder in `docs/structure.yml` with the c
 - **Repository:** single repo for one deployable; monorepo when there are separate frontend and backend apps (so the API contract and generated types live in one place).
 - **Folders:** by feature, with one `shared/` area for code used by three or more features, and a small set of top-level folders.
 
-## Reference skeleton (stack-neutral, monorepo)
+## Example skeleton (stack-neutral, monorepo)
 
 ```
 <repo>/
@@ -57,7 +57,7 @@ The result replaces the `<code>/` placeholder in `docs/structure.yml` with the c
   README.md              how to run, test and deploy in under 5 minutes
 ```
 
-Rename to the framework's conventions in the decision record (for example `app/` vs `pages/`); keep the principles.
+This is an example, not a template: rename to the framework's conventions in the decision record (for example `app/` vs `pages/`) and keep the principles.
 
 ## Rules to record in the decision record
 - Where a new feature goes, and where shared code goes (and the "used by 3+ features" rule).
@@ -65,7 +65,7 @@ Rename to the framework's conventions in the decision record (for example `app/`
 - Test location: next to the code it tests, or a mirrored `tests/` tree. Pick one.
 - Naming: file and folder case, one convention.
 - Config and secrets: config in one place per app; secrets never in the repo.
-- Enforce rules with tooling (lint rules for imports, CODEOWNERS per folder) rather than relying on memory.
+- Enforce rules with tooling (lint rules for imports) rather than relying on memory.
 
 ## Choose another option when
 - **Polyrepo** if teams must release independently and do not share code, or access must be separated by repository.

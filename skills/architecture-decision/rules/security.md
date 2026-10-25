@@ -26,7 +26,7 @@ New external integration · new sensitive data type · new role or admin · auth
 
 ```markdown
 # Security
-Owner: · Audience: engineers, admins · Last reviewed:
+Audience: engineers, admins · Last updated: <date> by <name>
 Sources: DR-xxxx (auth), data-model.md, api.md
 
 ## Trust boundaries

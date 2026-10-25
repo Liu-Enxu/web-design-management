@@ -14,7 +14,8 @@ Last updated: <date> by <name>
 | 6 quality-review | not started | | | docs/design/performance.md |
 | 7 release-retro | not started | | | docs/project/releases/<version>.md |
 
-## Open questions
+## Open questions (blocking the current gate)
+<!-- Each question lives in the doc it is about, with its owner. List it here as one line with a link, e.g. "Who speaks for admins? → product/stories.md". -->
 - 
 
-Team and owners: project/team.md · Changes: project/changes.md · Risks: project/risks.md
+Changes: project/changes.md · Risks: project/risks.md

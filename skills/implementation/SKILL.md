@@ -8,7 +8,7 @@ description: Stage 5 of the team workflow. Use when writing code for a planned t
 Goal: code that does what the task says, follows the recorded decisions, and is ready for review.
 
 ## Entry criteria
-- The task exists in `docs/project/plan.md` (or is a recorded small change, see project-flow) with acceptance criteria and an owner.
+- The task exists in `docs/project/plan.md` (or is a recorded small change, see project-flow) with acceptance criteria.
 
 ## Steps
 
@@ -26,7 +26,7 @@ Goal: code that does what the task says, follows the recorded decisions, and is 
    - write a short note in the PR and in `docs/project/changes.md`;
    - route back to `architecture-decision` or `requirements`.
 7. **Open a pull request** using the template below. Keep PRs reviewable (as a guide, under about 400 changed lines; split larger work).
-8. **Update the plan.** Set the task status in `docs/project/plan.md` (or the linked tracker).
+8. **Update the plan.** Set the task status in `docs/project/plan.md` (or the linked tracker), and its `Done by` to the git user name (`git config user.name`), or `contributor` if none is set.
 
 ## Definition of done
 - [ ] Acceptance criteria met, each with a test or a written manual check.

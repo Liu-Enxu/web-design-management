@@ -6,7 +6,7 @@
 #   A folder with children lists them below it; "_" is the folder's own description.
 #   A folder written as a single line accepts any files inside it.
 #   <angle brackets> and digits are placeholders: 0001-<title>.md matches 0042-auth.md.
-#   <code>/ is replaced by the real code folders after the code-organization decision.
+#   <code>/ stays a placeholder; the code layout lives in the code-organization decision record.
 
 version: 1
 tree:
@@ -41,7 +41,6 @@ tree:
       performance.md: budgets, optimization log
     project/:
       _: HOW we run the work
-      team.md: people, roles, RACI
       plan.md: current milestone tasks
       risks.md: risks, assumptions
       changes.md: change requests, log

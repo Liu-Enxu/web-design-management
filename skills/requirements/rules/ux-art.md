@@ -56,7 +56,7 @@ Tokens (color, type, spacing) are defined once in the library, not per screen.
 
 ```markdown
 # UX
-Owner: · Audience: developers, product · Last reviewed:
+Audience: developers, product · Last updated: <date> by <name>
 Sources: product/stories.md, Figma <file link>
 
 ## Art direction

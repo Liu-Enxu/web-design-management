@@ -54,7 +54,7 @@ Every column: explicit nullability and default.
 
 ```markdown
 # Data model
-Owner: · Audience: engineers · Last reviewed:
+Audience: engineers · Last updated: <date> by <name>
 Sources: DR-xxxx (data-storage), FR-xxx
 
 ## Stores

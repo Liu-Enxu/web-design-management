@@ -18,11 +18,10 @@ Owner: <tech lead> · Sensitivity: internal
 | decisions/ | key table | accepted (number, title, one-line decision) |
 | design/api.md | link | |
 | design/ux.md | link | |
-| project/team.md | full | |
 
 ## Never include
 - Risks, change log, retros
 - Credential register, secret values
 
 ## Order
-1. What it is 2. Architecture 3. Code layout 4. Decisions 5. Run/test/deploy 6. People
+1. What it is 2. Architecture 3. Code layout 4. Decisions 5. Run/test/deploy

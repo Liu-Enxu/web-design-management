@@ -37,7 +37,6 @@ Defined in `docs/structure.yml` (the source of truth); the tree below is drawn f
     │   ├── security.md      threats, admins, keys
     │   └── performance.md   budgets, optimization log
     └── project/             HOW we run the work
-        ├── team.md          people, roles, RACI
         ├── plan.md          current milestone tasks
         ├── risks.md         risks, assumptions
         ├── changes.md       change requests, log
@@ -47,7 +46,7 @@ Defined in `docs/structure.yml` (the source of truth); the tree below is drawn f
 ```
 <!-- structure:end -->
 
-`project-flow` creates every file and folder above on the first run. Files say `Status: not started` until a skill fills them. `<code>/` is replaced by the real code folders after the code-organization decision.
+`project-flow` creates every file and folder above on the first run. Unfilled files carry a "not started" status line until a skill fills them. `<code>/` stays a placeholder; the code layout lives in the code-organization decision record.
 
 ## Skills in development sequence
 
@@ -61,7 +60,7 @@ project-flow                   router: state → next skill
 │   ├── menus/ (12)            options incl. <code>/ layout
 │   ├── perspectives/ (5)      BE, FE, security, ops, UX
 │   └── rules/                 data, API, security design
-├── 4  task-breakdown          tasks; scaffold <code>/
+├── 4  task-breakdown          tasks; plan the scaffold
 ├── 5  implementation          Figma → code, run end to end
 ├── 6  quality-review          check vs requirements, design
 │   └── rules/                 security and perf. testing
@@ -79,7 +78,7 @@ W = writes · U = updates · R = reads · `docs/` paths unless noted
 
 | Skill | product/ | decisions/ | design/ | project/ | Other |
 |---|---|---|---|---|---|
-| project-flow | W all stubs | W README.md | W all stubs | W all stubs · team.md | W README.md, structure.yml, STATE.md · root AGENTS.md, CLAUDE.md · runs check |
+| project-flow | W all stubs | W README.md | W all stubs | W all stubs | W README.md, structure.yml, STATE.md · root AGENTS.md, CLAUDE.md · runs check |
 | user-stories | W stories.md | | | | U STATE.md |
 | requirements | R stories · W requirements.md | | W ux.md | U risks.md | U STATE.md · Figma |
 | architecture-decision | R | W records + README.md | W architecture.md, data-model.md, api.md, api/, security.md | U risks.md | U STATE.md |

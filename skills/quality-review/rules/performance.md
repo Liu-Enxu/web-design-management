@@ -33,7 +33,7 @@ Changes that alter architecture (new store, new service, cache layer) need a dec
 
 ```markdown
 # Performance
-Owner: · Audience: engineers · Last reviewed:
+Audience: engineers · Last updated: <date> by <name>
 Sources: NFR-xxx
 
 ## Budgets
