@@ -110,7 +110,7 @@ skills/
                            CLAUDE.md, files/ (starter content)
   user-stories/  requirements/
   architecture-decision/
-    stacks.md              team default stacks (TODO)
+    stacks.md              team default stacks
     menus/                 12 decision menus + _template.md
     perspectives/          BE, FE, security, ops checklists
     rules/                 data.md, api.md, security.md

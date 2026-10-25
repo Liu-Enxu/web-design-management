@@ -18,7 +18,7 @@ Goal: from the requirements, a proposed and agreed architecture, a chosen stack,
 2. **Propose 1–2 candidate architectures.** For each: a container diagram (`diagrams` skill), one paragraph on how it meets the Must requirements and NFRs, main risks, rough cost and effort. Recommend one and say why. Mark everything `proposed`.
 
 ### B. Choose the stack
-3. **Start from `stacks.md`** (the team's list of common stacks with defaults). Pick the profile that fits the requirements; list any part you change and why. If `stacks.md` has no fitting profile, propose one from the menus and mark it as a proposal for the team list.
+3. **Start from `stacks.md`** (the team's list of common stacks with defaults). Its profiles are starting points, not templates: use the closest one only where steps 1–2 and the menus agree with it; list any part you change and why. If `stacks.md` has no fitting profile, propose one from the menus and mark it as a proposal for the team list.
 4. Record the stack as a decision record.
 
 ### C. Decide by menu
