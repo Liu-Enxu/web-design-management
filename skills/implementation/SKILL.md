@@ -1,6 +1,6 @@
 ---
 name: implementation
-description: Stage 5 of the team workflow. Use when writing code for a planned task: branch and pull request flow, coding conventions, commit messages, definition of done, and what to do when a task conflicts with requirements or decision records. Use for any "implement", "build" or "fix" request in a workflow-managed project.
+description: Stage 5 of the team workflow. Use when writing code for a planned task. Covers branch and pull request flow, coding conventions, commit messages, definition of done, and what to do when a task conflicts with requirements or decision records. Use for any "implement", "build" or "fix" request in a workflow-managed project.
 ---
 
 # Implementation (stage 5)
@@ -30,7 +30,12 @@ Goal: code that does what the task says, follows the recorded decisions, and is 
    - write a short note in the PR and in `docs/project/changes.md`;
    - route back to `architecture-decision` or `requirements`.
 7. **Open a pull request** using the template below. Keep PRs reviewable (as a guide, under about 400 changed lines; split larger work).
-8. **Update the plan.** Set the task status in `docs/project/plan.md` (or the linked tracker), and its `Done by` to the git user name (`git config user.name`), or `contributor` if none is set.
+8. **Get it reviewed; don't ask how.** Start a fresh review subagent on Opus 5.5 (`claude-opus-5-5`); your own session never counts as the review. Give it the PR number and task ID, and tell it to follow `quality-review/SKILL.md`, post the review notes as a PR comment, and never edit, approve or merge.
+   - Blocking comments: fix them, push, and start a new review subagent. Still blocking after two rounds: stop and ask a person.
+   - No blocking comments and `Door: two-way`: merge the PR.
+   - No blocking comments and `Door: one-way`: ask a person to approve; merge only after they do.
+   - If you cannot start a subagent, ask a person to review instead.
+9. **Update the plan.** Set the task status in `docs/project/plan.md` (or the linked tracker), and its `Done by` to the git user name (`git config user.name`), or `contributor` if none is set.
 
 ## Fixing a bug
 For a `BUG-` item in `docs/product/stories.md`. Branch as `fix/BUG-001-<short-name>`.
@@ -49,7 +54,7 @@ If you cannot make it fail, stop: list what you tried and ask the reporter for a
 - [ ] UI matches the `ready` design, including loading, empty, error and permission states.
 - [ ] Follows linked decision records and the API contract; any deviation raised, not hidden.
 - [ ] Secrets are not in code or logs; new credentials added to the security register (no values).
-- [ ] Reviewed and approved (stage 6).
+- [ ] Reviewed per step 8 with no blocking comments; one-way PRs also approved by a person.
 
 ## Rules for AI agents
 - Work only on the assigned task; list anything else you notice as a follow-up instead of fixing it in the same PR.

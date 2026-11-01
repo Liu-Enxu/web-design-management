@@ -1,6 +1,6 @@
 ---
 name: architecture-decision
-description: Stage 3 of the team workflow. Use to design the architecture from approved requirements: the agent proposes an architecture, the team picks a tech stack from default options, decides each category from option menus, designs the data model (database choice, data types for time, images, money, IDs), the API contract and security (threats, admins, credential owners), with backend, frontend, security and operations reviews. Use for any "how should we build it", "which stack/database" or "which approach" question. Writes docs/decisions/ and docs/design/.
+description: Stage 3 of the team workflow. Use to design the architecture from approved requirements. The agent proposes an architecture, the team picks a tech stack from default options, decides each category from option menus, designs the data model (database choice, data types for time, images, money, IDs), the API contract and security (threats, admins, credential owners), with backend, frontend, security and operations reviews. Use for any "how should we build it", "which stack/database" or "which approach" question. Writes docs/decisions/ and docs/design/.
 ---
 
 # Architecture (stage 3)

@@ -1,6 +1,6 @@
 ---
 name: design-doc
-description: Cross-cutting skill for the team workflow. Use whenever design or development documentation is created, updated, read or reorganized: it defines how docs/ is structured, where each kind of information lives, what does not belong, size budgets and when sections must be updated. Use before writing anything into docs/design/, and to audit the docs for staleness or bloat.
+description: Cross-cutting skill for the team workflow. Use whenever design or development documentation is created, updated, read or reorganized. It defines how docs/ is structured, where each kind of information lives, what does not belong, size budgets and when sections must be updated. Use before writing anything into docs/design/, and to audit the docs for staleness or bloat.
 ---
 
 # Design and development doc

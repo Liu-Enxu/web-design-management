@@ -8,7 +8,7 @@ description: Stage 6 of the team workflow. Use to review a pull request or compl
 Goal: confirm the change does what was agreed, the way it was agreed, is safe, and is fast and cheap enough to merge.
 
 ## Entry criteria
-- A pull request using the implementation PR template, linked to a task.
+- A pull request using the implementation PR template, linked to a task. Every PR is reviewed as it is opened, while `docs/STATE.md` stays at stage 5.
 
 ## Review order
 Review in this order; stop and send back early if a top item fails.
@@ -39,7 +39,8 @@ Run the optimization loop in `rules/performance.md` (measure, profile, one chang
 
 ## Rules
 - Review the change, not the person.
-- Agents may review and comment; a person approves merges for anything touching a one-way decision, auth, data deletion or payments.
+- The reviewer is never the author's session: a fresh review subagent on Opus 5.5, or a person. It posts the review notes as a PR comment and never edits, approves or merges.
+- Merging: `Door: two-way` with no blocking comments, the author agent merges. `Door: one-way`, a person approves first. Anything touching a one-way decision, auth, data deletion or payments is one-way whatever the PR says; if the reviewer thinks a two-way PR is one-way, it is one-way.
 - Two rounds without agreement: talk synchronously, then record the outcome on the PR.
 
 ## Review notes template
@@ -52,6 +53,7 @@ Review of PR <link> (T-xxx)
 - Performance: n/a / within budget / regression (<metric>)
 - Tests: adequate / gaps
 - Docs updated: yes / missing (<file>)
+- Door: two-way | one-way (agrees with the PR / should be one-way because <reason>)
 - Outcome: approve | request changes | send back to <stage>
 ```
 
